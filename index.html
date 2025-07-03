@@ -1,1 +1,40 @@
-Test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Class Garden Map</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="map-container">
+    <img src="map.jpg" alt="Garden Map" id="map-image">
+
+    <!-- Example clickable plant areas -->
+    <div class="plant" style="top: 30%; left: 40%;" data-poster="posters/tomato.jpg"></div>
+    <div class="plant" style="top: 55%; left: 70%;" data-poster="posters/basil.jpg"></div>
+    <!-- Add more as needed -->
+
+    <!-- Popup -->
+    <div id="popup" class="hidden">
+      <div id="popup-content">
+        <span id="close">&times;</span>
+        <img id="poster-image" src="" alt="Plant Poster">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.querySelectorAll('.plant').forEach(el => {
+      el.addEventListener('click', () => {
+        const poster = el.getAttribute('data-poster');
+        document.getElementById('poster-image').src = poster;
+        document.getElementById('popup').classList.remove('hidden');
+      });
+    });
+
+    document.getElementById('close').addEventListener('click', () => {
+      document.getElementById('popup').classList.add('hidden');
+    });
+  </script>
+</body>
+</html>
